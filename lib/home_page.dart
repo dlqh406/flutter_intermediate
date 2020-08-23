@@ -10,21 +10,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SnackBar')),
-      body: Builder(
-        builder: (context)=> Center(
-          child: RaisedButton(onPressed: (){
-            final snackBar0 = SnackBar(
-              content: Text('메일이 삭제되었습니다'),
-              action: SnackBarAction(label: '취소', onPressed:(){
-              //눌렀을때 처리 코드
-              }),
-            );
-            Scaffold.of(context).showSnackBar(snackBar0);
-          }, child: Text('Show SnackBar'),),
+          title: Text('AnimatedContainer')),
+      body: GridView.count(
+        crossAxisCount: 3,
+        children: List.generate(50, (position){return Center(
+            child:  Text('Item $position'),
+        );}
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+          });},
+        child: Icon(Icons.play_arrow),
+
+      ),
+
     );
   }
 }
+
 
