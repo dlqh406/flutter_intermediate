@@ -13,11 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         //appbar color:
-        primarySwatch: Colors.yellow,
-        //버튼 컬러
-        accentColor: Colors.red,
-        //dark Theme
-        brightness:  Brightness.dark,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),

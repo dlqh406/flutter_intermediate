@@ -8,24 +8,23 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: Text('AnimatedContainer')),
-      body: GridView.count(
-        crossAxisCount: 3,
-        children: List.generate(50, (position){return Center(
-            child:  Text('Item $position'),
-        );}
+    return DefaultTabController(
+      child: Scaffold(
+        appBar: AppBar(
+            title: Text('TabController'),
+        bottom : TabBar(tabs: [
+          Tab(icon: Icon(Icons.access_alarm),text: 'Tab1',),
+          Tab(icon: Icon(Icons.access_alarm),text: 'Tab2'),
+          Tab(icon: Icon(Icons.access_alarm),text: 'Tab3')
+        ],)),
+        body: TabBarView(
+          children: [
+            Center(child: Icon(Icons.access_alarm),),
+            Center(child: Text('Tab2'),),
+            Center(child: Text('Tab3'),)
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-          });},
-        child: Icon(Icons.play_arrow),
-
-      ),
-
+      ), length: 3,
     );
   }
 }
