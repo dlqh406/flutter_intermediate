@@ -6,25 +6,40 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 class _HomePageState extends State<HomePage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      child: Scaffold(
-        appBar: AppBar(
-            title: Text('TabController'),
-        bottom : TabBar(tabs: [
-          Tab(icon: Icon(Icons.access_alarm),text: 'Tab1',),
-          Tab(icon: Icon(Icons.access_alarm),text: 'Tab2'),
-          Tab(icon: Icon(Icons.access_alarm),text: 'Tab3')
-        ],)),
-        body: TabBarView(
-          children: [
-            Center(child: Icon(Icons.access_alarm),),
-            Center(child: Text('Tab2'),),
-            Center(child: Text('Tab3'),)
-          ],
-        ),
-      ), length: 3,
+    return Scaffold(
+      appBar: AppBar(
+          title: Text('AnimatedContainer')),
+      body: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment:  CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            validator: (value){
+              if(value.isEmpty){
+                return '공백을 채워주세요';
+              }
+            }
+          ),
+          Center(
+            child: RaisedButton(
+              onPressed: (){
+                if(_formKey.currentState.validate()){
+                  // 빈칸을 다 채웠을떄 여기에 코드 작성
+                  Scaffold.of(_formKey.currentContext).showSnackBar(SnackBar(
+                    content:  Text("처리완료"),
+                  ));
+                }
+              },
+              child: Text('제출'),
+            ),
+          )
+        ],
+      ),),
     );
   }
 }
